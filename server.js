@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(formidable());
 
-mongoose.connect(process.env.MONGO_DB_URI || "mongodb://localhost/reacttodolaist");
+mongoose.connect(process.env.MONGO_DB_URI);
 
 // Importing Task
 const Task = require("./models/Task");
