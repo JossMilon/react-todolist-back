@@ -11,6 +11,10 @@ mongoose.connect(process.env.MONGO_DB_URI);
 // Importing Task
 const Task = require("./models/Task");
 
+app.get("/", (req, res) => {
+    res.status(200).json("Hello world")
+});
+
 app.post("/add-task", async (req, res) => {
     try{
         console.log(req.fields.task)
