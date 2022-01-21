@@ -1,12 +1,14 @@
 const express = require("express");
 const formidable = require("express-formidable");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require('dotenv').config;
 
 const app = express();
+app.use(cors());
 app.use(formidable());
 
-mongoose.connect(process.env.MONGO_DB_URI);
+mongoose.connect(process.env.MONGO_DB_URI || "mongodb://localhost/reacttodolaist");
 
 // Importing Task
 const Task = require("./models/Task");
