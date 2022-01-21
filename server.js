@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(formidable());
 
-mongoose.connect(process.env.MONGO_DB_URI);
+mongoose.connect(process.env.MONGO_DB_URI || "mongodb://localhost/reacttodolist");
 
 // Importing Task
 const Task = require("./models/Task");
@@ -19,7 +19,6 @@ app.get("/", (req, res) => {
 
 app.post("/add-task", async (req, res) => {
     try{
-        console.log(req.fields.task)
         const newTask = new Task({
             task: req.fields.task
         });
