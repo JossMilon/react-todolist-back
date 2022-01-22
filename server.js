@@ -30,6 +30,16 @@ app.post("/add-task", async (req, res) => {
     }
 });
 
+app.post("/delete-task", async (req, res) => {
+    try {
+        await Task.deleteOne({task: req.fields.task});
+        res.status(200).json("Task deleted");
+    }
+    catch(error) {
+        res.status(400).json({error: error.message})
+    }
+});
+
 app.all("*", (req, res) => {
     res.status(404).json({error: "page not found"})
 });
